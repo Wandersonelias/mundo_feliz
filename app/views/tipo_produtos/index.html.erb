@@ -1,0 +1,32 @@
+<h1>Categorias</h1>
+<hr>
+<div>
+    <%= link_to "Nova categoria",  new_tipo_produto_path, class: "btn btn-primary" %>
+    
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Criada</th>
+      <th scope="col">Atualizada</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+        <% @tipos.each do |tipo| %>
+            <tr>
+            <td><%= tipo.id %></td>
+            <td><%= tipo.nome %></td>
+            <td><%= tipo.created_at %></td>
+            <td><%= tipo.updated_at %></td>
+            <td>
+                <%= link_to "Editar", edit_tipo_produto_path(tipo.id), class: "btn btn-warning"  %>
+                <%= link_to "Excluir", tipo_produto_path(tipo.id), method: :delete, class: "btn btn-danger", data: { confirm: 'Você tem certesa disso?' } %>
+                
+            </td>
+            </tr>
+        <% end %>
+  </tbody>
+</table>
